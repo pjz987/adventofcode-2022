@@ -1,0 +1,12 @@
+with open('input.txt', 'r') as f:
+    content = f.read()
+
+elf_snacks = content.split('\n\n')
+elf_snacks_itemized = list(map(lambda total: total.split(), elf_snacks))
+for i, elf in enumerate(elf_snacks_itemized):
+    elf_snacks_itemized[i] = list(map(lambda snack: int(snack), elf))
+elf_snack_totals = list(map(lambda snacks: sum(snacks), elf_snacks_itemized))
+elf_snack_totals.sort()
+top_three_snack_loads_combined = elf_snack_totals[-3:]
+top_three_snack_loads_sum = sum(top_three_snack_loads_combined)
+print(top_three_snack_loads_sum)
